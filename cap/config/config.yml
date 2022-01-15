@@ -1,0 +1,22 @@
+experimental_info:
+  sub: 'hoge'
+  shedule: 'fuga'
+  session: 9999
+  med: 'foo'
+
+signal_info:
+  width: 500
+  height: 100
+  radius: 20
+
+color_01:
+  color_R: 0
+  color_G: 255
+  color_B: 0
+
+arduino:
+  port: 'COM3'
+  serial_baudrate : 9600
+  pin_signal_01: 9
+  pin_signal_01: 10
+  pin_signal_01: 11
