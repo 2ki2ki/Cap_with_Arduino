@@ -11,12 +11,28 @@ signal_info:
 
 color_01:
   color_R: 0
+  color_G: 0
+  color_B: 0
+
+color_02:
+  color_R: 0
   color_G: 255
   color_B: 0
+
+color_03:
+  color_R: 255
+  color_G: 0
+  color_B: 0
+
+color_04:
+  color_R: 0
+  color_G: 0
+  color_B: 255
 
 arduino:
   port: 'COM3'
   serial_baudrate : 9600
-  pin_signal_01: 9
-  pin_signal_01: 10
-  pin_signal_01: 11
+  pin_01: 8
+  pin_02: 9
+  pin_03: 10
+  pin_04: 11
