@@ -10,7 +10,7 @@ signal_info:
   radius: 20
 
 color_01:
-  color_R: 0
+  color_R: 255
   color_G: 0
   color_B: 0
 
@@ -20,19 +20,16 @@ color_02:
   color_B: 0
 
 color_03:
-  color_R: 255
-  color_G: 0
-  color_B: 0
-
-color_04:
   color_R: 0
   color_G: 0
   color_B: 255
 
+color_04:
+  color_R: 255
+  color_G: 255
+  color_B: 0
+
 arduino:
-  port: 'COM3'
+  port: 'COM9'
   serial_baudrate : 9600
-  pin_01: 8
-  pin_02: 9
-  pin_03: 10
-  pin_04: 11
+  pin_num: 4
