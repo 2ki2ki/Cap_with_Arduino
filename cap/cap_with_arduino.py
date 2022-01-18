@@ -68,7 +68,7 @@ def capture(sn:int,task:int):
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         re_color_frame = cv2.cvtColor(gray_frame, cv2.COLOR_GRAY2BGR)
         if  0 <  sn.value <= pin_num:
-            print(sn.value)
+           # print(sn.value)
             draw_circle(re_color_frame,coordinate,radius, circle_colors[sn.value-1], -1)
 
         cv2.imshow('frame',re_color_frame)
