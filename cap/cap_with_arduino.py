@@ -54,7 +54,7 @@ def capture(sn:int,task:int):
     color_03 = circle_color_getter(info,'color_03')
     color_04 = circle_color_getter(info,'color_04')
     circle_colors = (color_01,color_02,color_03,color_04)
-
+    pin_num = info["arduino"]["pin_num"]
     cap = cv2.VideoCapture(0)
     fps = int(cap.get(cv2.CAP_PROP_FPS))                    
     w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))              
@@ -67,16 +67,15 @@ def capture(sn:int,task:int):
         ret, frame = cap.read()
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         re_color_frame = cv2.cvtColor(gray_frame, cv2.COLOR_GRAY2BGR)
-
-        if sn.value > -1:
+        if  0 <  sn.value <= pin_num:
             print(sn.value)
-            draw_circle(re_color_frame,coordinate,radius, circle_colors[sn.value], -1)
+            draw_circle(re_color_frame,coordinate,radius, circle_colors[sn.value-1], -1)
 
         cv2.imshow('frame',re_color_frame)
         video.write(re_color_frame)
-
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
     task.value = 0
     video.release()
     cap.release()
@@ -88,10 +87,6 @@ def get_serial(sn:int,task:int):
     info = read_yaml()
     port = info["arduino"]["port"]
     serial_baudrate = info["arduino"]["serial_baudrate"]
-    pin_01 = info["arduino"]["pin_01"]
-    #pin_02 = info["arduino"]["pin_02"]
-    #pin_03 = info["arduino"]["pin_03"]
-    #pin_04 = info["arduino"]["pin_04"]
 
     print("Open port!")
     ser = serial.Serial(port,serial_baudrate)
@@ -99,15 +94,14 @@ def get_serial(sn:int,task:int):
     while task.value == 1:
         pin_num = ser.readline()
         pin_num_int = int(pin_num.strip().decode("UTF-8"))
-        #print(pin_num_int)
-        sn.value = pin_num_int - pin_01
+        sn.value = pin_num_int
 
     ser.close()
     print("Close port!")
 
 
 if __name__ == '__main__':
-    print("Wait... starting record...")
+    print("Wait... now starting recording...")
     serial_num = Value('i',-1)
     task_state = Value('i',1)
     cap_p = Process(target = capture, args=(serial_num,task_state))

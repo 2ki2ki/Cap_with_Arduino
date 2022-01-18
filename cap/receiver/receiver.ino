@@ -17,13 +17,13 @@ void loop() {
   // put your main code here, to run repeatedly:
   int stim_num = 0;
   if (digitalRead(stim01) == HIGH){
-    stim_num = stim01;
+    stim_num = 1;
   }else if (digitalRead(stim02) ==HIGH){
-    stim_num = stim02;
+    stim_num = 2;
   }else if (digitalRead(stim03) == HIGH){
-      stim_num = stim03;
+      stim_num = 3;
   }else if (digitalRead(stim04) == HIGH){
-    stim_num = stim04;
+    stim_num = 4;
   }else{
     stim_num = 0;
   }
